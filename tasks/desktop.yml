@@ -62,10 +62,10 @@
 - name: Install Gnome Shell Extension - Caffeine
   command: yay -S --noconfirm gnome-shell-extension-caffeine-git
 
-- name: Install Gnome Shell Extension: Blur My Shell
+- name: Install Gnome Shell Extension - Blur My Shell
   command: yay -S --noconfirm gnome-shell-extension-blur-my-shell-git
 
-- name: Install Gnome Shell Extension: GSConnect
+- name: Install Gnome Shell Extension - GSConnect
   command: yay -S --noconfirm gnome-shell-extension-gsconnect-git
 
 - name: Enable extensions
