@@ -59,7 +59,7 @@
     name: gnome-shell-extension-appindicator
   become: yes
 
-- name: Install Gnome Shell Extension: Caffeine
+- name: Install Gnome Shell Extension - Caffeine
   command: yay -S --noconfirm gnome-shell-extension-caffeine-git
 
 - name: Install Gnome Shell Extension: Blur My Shell
