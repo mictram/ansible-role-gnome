@@ -41,11 +41,11 @@
 - name: Install wallpaper file
   ansible.builtin.copy:
     src: wallhaven-z8qvew.png
-    dest: "/home/{{ username }}/.local/share/backgrounds/wallhaven-z8qvew.png"
+    dest: "/home/{{ ansible_user_id }}/.local/share/backgrounds/wallhaven-z8qvew.png"
     force: yes
 
 - name: Set wallpaper
-  command: gsettings set org.gnome.desktop.background picture-uri "file:///home/{{ username }}/.local/share/backgrounds/wallhaven-z8qvew.png"
+  command: gsettings set org.gnome.desktop.background picture-uri "file:///home/{{ ansible_user_id }}/.local/share/backgrounds/wallhaven-z8qvew.png"
 
 # can't figure out key formatting
 #- name: Set wallpaper
