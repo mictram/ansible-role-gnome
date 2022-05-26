@@ -1,0 +1,75 @@
+---
+- name: Install Gnome Desktop
+  pacman:
+    name: gnome-desktop
+  become: yes
+
+- name: Install Chrome Gnome Shell
+  command: yay -S --noconfirm chrome-gnome-shell
+
+- name: Gnome - Natural trackpad scrolling
+  community.general.dconf:
+    key: "/org/gnome/desktop/peripherals/touchpad/natural-scroll"
+    value: "true"
+    state: present
+
+- name: Gnome - Tap to click
+  community.general.dconf:
+    key: "/org/gnome/desktop/peripherals/touchpad/tap-to-click"
+    value: "true"
+    state: present
+
+- name: Gnome - Set theme Adwaita-dark
+  command: gsettings set org.gnome.desktop.interface gtk-theme "{{ gtk_theme }}"
+
+# can't figure out key formatting
+#- name: Gnome - Set theme Adwatia-dark
+#  community.general.dconf:
+#    key: "/org/gnome/desktop/interface/gtk-theme"
+#    value: 'Adwaita-dark'
+#    state: present
+
+- name: Gnome - Capslock as Esc
+  community.general.dconf:
+    key: "/org/gnome/desktop/input-sources/xkb-options"
+    value: "['caps:escape']"
+    state: present
+
+- name: Gnome - mouse flat acceleration profile
+  command: gsettings set org.gnome.desktop.peripherals.mouse accel-profile 'flat'
+
+- name: Install wallpaper file
+  ansible.builtin.copy:
+    src: wallhaven-z8qvew.png
+    dest: "/home/{{ username }}/.local/share/backgrounds/wallhaven-z8qvew.png"
+    force: yes
+
+- name: Set wallpaper
+  command: gsettings set org.gnome.desktop.background picture-uri "file:///home/{{ username }}/.local/share/backgrounds/wallhaven-z8qvew.png"
+
+# can't figure out key formatting
+#- name: Set wallpaper
+#  community.general.dconf:
+#    key: "/org/gnome/desktop/background/picture-uri"
+#    value: "file:///home/{{ username }}/.local/share/backgrounds/wallhaven-z8qvew.png"
+#    state: present
+
+- name: Install AppIndicator/KStatusNotifierItem support
+  pacman:
+    name: gnome-shell-extension-appindicator
+  become: yes
+
+- name: Install Gnome Shell Extension: Caffeine
+  command: yay -S --noconfirm gnome-shell-extension-caffeine-git
+
+- name: Install Gnome Shell Extension: Blur My Shell
+  command: yay -S --noconfirm gnome-shell-extension-blur-my-shell-git
+
+- name: Install Gnome Shell Extension: GSConnect
+  command: yay -S --noconfirm gnome-shell-extension-gsconnect-git
+
+- name: Enable extensions
+  community.general.dconf:
+    key: "/org/gnome/shell/enabled-extensions"
+    value: "['pop-shell@system76.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'workspace-indicator@gnome-shell-extensions.gcampax.github.com']"
+    state: present

@@ -1,0 +1,10 @@
+dependencies: []
+galaxy_info:
+  author: mictram
+  description: Gnome installation and configuration to personal tastes
+  license: MIT
+  min_ansible_version: 2.1
+  platforms:
+  - name: Arch
+  galaxy_tags:
+  - Gnome

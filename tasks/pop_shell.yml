@@ -1,0 +1,15 @@
+---
+- name: Gnome - Install Pop-shell (git)
+  command: yay -S --noconfirm gnome-shell-extension-pop-shell-git
+  become: yes
+  become_user: "{{ username }}"
+
+- name: Configure Pop-shell - tile by default
+  community.general.dconf:
+    key: "/org/gnome/shell/extensions/pop-shell/tile-by-default"
+    value: "true"
+
+- name: Configure Pop-shell - active hint
+  community.general.dconf:
+    key: "/org/gnome/shell/extensions/pop-shell/active-hint"
+    value: "true"

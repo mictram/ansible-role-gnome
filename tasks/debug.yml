@@ -1,0 +1,4 @@
+---
+- name: Suggest login/logout to complete Gnome configuration
+  ansible.builtin.debug:
+    msg: Please logout/login to complete Gnome configuration.

@@ -1,0 +1,4 @@
+---
+- include_tasks: desktop.yml
+- include_tasks: pop_shell.yml
+- include_tasks: debug.yml
